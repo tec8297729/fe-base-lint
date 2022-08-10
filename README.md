@@ -33,9 +33,9 @@ module.exports = {
 `.prettierrc.js`
 
 ```js
-const figLint = require('fe-base-lint');
+const config = require('fe-base-lint');
 
 module.exports = {
-  ...figLint.prettier,
+  ...config.prettier,
 };
 ```
