@@ -1,0 +1,61 @@
+{
+  "name": "fe-base-lint",
+  "version": "0.1.9",
+  "description": "前端规范集合配置文件",
+  "keywords": [],
+  "homepage": "https://www.jonhuu.com/",
+  "license": "ISC",
+  "author": "zzq8297729@163.com",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "maintainers": [
+    "zhanzhiqiang"
+  ],
+  "scripts": {
+    "build": "rimraf dist && tsc --build tsconfig.json",
+    "deps": "yarn upgrade-interactive --latest",
+    "prepublishOnly": "npm run build && npm test && np --no-cleanup --yolo --no-publish --any-branch",
+    "prettier": "prettier -c --write \"**/*\"",
+    "testTS": "npm run build && cd tsExample && npm run lint",
+    "testJS": "npm run build && cd jsExample && npm run lint",
+    "test": "npm run testTS && npm run testJS"
+  },
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.15.8",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "chalk": "4.1.1",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-formatter-pretty": "^4.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-compat": "^3.1.1",
+    "eslint-plugin-eslint-comments": "^3.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^24.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-markdown": "^2.2.0",
+    "eslint-plugin-promise": "^5.0.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-unicorn": "^20.0.0",
+    "fast-glob": "3.2.4",
+    "prettier": "2.4.1",
+    "typescript": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.5",
+    "cross-env": "7.0.3",
+    "np": "6.2.5",
+    "rimraf": "3.0.2"
+  }
+}
