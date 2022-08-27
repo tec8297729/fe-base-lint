@@ -13,6 +13,9 @@
   "maintainers": [
     "zhanzhiqiang"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
   "scripts": {
     "build": "rimraf dist && tsc --build tsconfig.json",
     "deps": "yarn upgrade-interactive --latest",
