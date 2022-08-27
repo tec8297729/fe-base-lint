@@ -231,7 +231,7 @@ export default {
   '@typescript-eslint/return-await': 0,
   // 不要求使用分号在结尾处
   semi: 'off',
-  '@typescript-eslint/semi': 0,
+  '@typescript-eslint/semi': [2, 'never'],
   // 不要求禁止在函数括号前有空格
   'space-before-function-paren': 'off',
   '@typescript-eslint/space-before-function-paren': 0,
