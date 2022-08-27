@@ -16,6 +16,10 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tec8297729/fe-base-lint"
+  },
   "scripts": {
     "build": "rimraf dist && tsc --build tsconfig.json",
     "deps": "yarn upgrade-interactive --latest",
