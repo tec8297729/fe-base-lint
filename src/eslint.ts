@@ -87,7 +87,7 @@ module.exports = {
     // 不强制每一行都是独立的jsx元素
     'react/jsx-one-expression-per-line': 0,
     // 不强制generator 函数中 * 号周围有空格
-    'generator-star-spacing': 0,
+    // 'generator-star-spacing': 0,
     // 不强制在函数括号内使用一致的换行
     'function-paren-newline': 0,
     // 不强制导入模块时，必须解构出来的参数
@@ -145,7 +145,7 @@ module.exports = {
     // 不禁止eslint-disable不带规则名称的注释
     'eslint-comments/no-unlimited-disable': 0,
     'no-param-reassign': 2, // 禁止重新设置 函数形参
-    'space-before-function-paren': 0, // 不禁止括号前有空格
+    // 'space-before-function-paren': 0, // 不禁止括号前有空格
     'react/self-closing-comp': 1, // 禁止没有子组件的额外结束标签
     'no-plusplus': 0, // 允许使用一元运算符 ++
     'no-unused-vars': 'warn', // 变量未使用
