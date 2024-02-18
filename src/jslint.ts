@@ -1,7 +1,3 @@
-import * as path from 'path';
-import * as fs from 'fs';
-import tsEslintConfig from './tsEslintConfig';
-
 const parserOptions = {
   ecmaFeatures: {
     jsx: true,
@@ -14,34 +10,19 @@ const parserOptions = {
     ],
   },
   requireConfigFile: false,
-  project: './tsconfig.json',
+  // project: './tsconfig.json',
 };
 
-const isJsMoreTs = async (path = 'src') => {
-  const fg = require('fast-glob');
-  const jsFiles = await fg(`${path}/src/**/*.{js,jsx}`, { deep: 3 });
-  const tsFiles = await fg(`${path}/src/**/*.{ts,tsx}`, { deep: 3 });
-  return jsFiles.length > tsFiles.length;
-};
-
-const isTsProject = fs.existsSync(path.join(process.cwd() || '.', './tsconfig.json'));
-
-if (isTsProject) {
-  try {
-    isJsMoreTs(process.cwd()).then((jsMoreTs) => {
-      if (!jsMoreTs) return;
-      console.log('这是一个 TypeScript 项目，如果不是请删除 tsconfig.json');
-    });
-  } catch (e) {
-    console.log(e);
-  }
-}
+// const isJsMoreTs = async (path = 'src') => {
+//   const fg = require('fast-glob');
+//   const jsFiles = await fg(`${path}/src/**/*.{js,jsx}`, { deep: 3 });
+//   const tsFiles = await fg(`${path}/src/**/*.{ts,tsx}`, { deep: 3 });
+//   return jsFiles.length > tsFiles.length;
+// };
 
 module.exports = {
-  extends: ['eslint-config-airbnb-base', 'prettier'].concat(
-    isTsProject ? ['plugin:@typescript-eslint/recommended'] : ['plugin:react/recommended'],
-  ),
-  parser: isTsProject ? '@typescript-eslint/parser' : '@babel/eslint-parser',
+  extends: ['eslint-config-airbnb-base', 'prettier', 'plugin:react/recommended'],
+  parser:  '@babel/eslint-parser',
   plugins: ['eslint-comments', 'react', 'jest', 'unicorn', 'react-hooks'],
   env: {
     browser: true,
@@ -55,6 +36,8 @@ module.exports = {
   rules: {
     // 除了warn和error允许使用，其它console使用警告提示
     'no-console': [1, { allow: ['info', 'warn', 'error'] }],
+    "indent": ["error", 2],
+    "no-tabs": "error",
     'react/display-name': 0,
     // 允许解构props参数给 jsx组件使用
     'react/jsx-props-no-spreading': 0,
@@ -145,17 +128,16 @@ module.exports = {
     // 不禁止eslint-disable不带规则名称的注释
     'eslint-comments/no-unlimited-disable': 0,
     'no-param-reassign': 2, // 禁止重新设置 函数形参
-    // 'space-before-function-paren': 0, // 不禁止括号前有空格
+    'space-before-function-paren': 0, // 不禁止括号前有空格
     'react/self-closing-comp': 1, // 禁止没有子组件的额外结束标签
     'no-plusplus': 0, // 允许使用一元运算符 ++
     'no-unused-vars': 'warn', // 变量未使用
-    ...(isTsProject ? tsEslintConfig : {}),
   },
   settings: {
     // support import modules from TypeScript files in JavaScript files
     'import/resolver': {
       node: {
-        extensions: isTsProject ? ['.js', '.jsx', '.ts', '.tsx', '.d.ts'] : ['.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
       },
     },
     'import/parsers': {

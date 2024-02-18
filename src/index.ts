@@ -1,9 +1,11 @@
 /** @format */
-const strictEslint = require('./eslint');
+const strictJslint = require('./jslint');
+const strictTslint = require('./tslint');
 const prettier = require('./prettier');
 
 module.exports = {
   prettier,
-  eslint: strictEslint,
-  default: strictEslint,
+  jslint: strictJslint,
+  tslint: strictTslint,
+  default: strictJslint,
 };
