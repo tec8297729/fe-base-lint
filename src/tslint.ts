@@ -10,7 +10,17 @@ module.exports = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['eslint-comments', 'react', 'jest', 'unicorn', 'react-hooks', '@typescript-eslint', 'prettier'],
+  plugins: [
+    'eslint-comments',
+    'react',
+    'jest',
+    'unicorn',
+    'react-hooks',
+    '@typescript-eslint',
+    'prettier',
+    'import',
+    'simple-import-sort',
+  ],
   settings: {
     // support import modules from TypeScript files in JavaScript files
     'import/resolver': {
@@ -28,7 +38,7 @@ module.exports = {
   rules: {
     ...eslintConfig.rules,
     // 清余多余空格，使用prettier格式化
-    "prettier/prettier": "error",
+    'prettier/prettier': 'error',
     // 必须使用T[]声明数组类型
     '@typescript-eslint/array-type': 'error',
     'no-undef': 0, // 不禁止未声明的变量
@@ -260,7 +270,7 @@ module.exports = {
     '@typescript-eslint/return-await': 0,
     // 不要求使用分号在结尾处
     semi: 'off',
-    '@typescript-eslint/semi': ["error", "never"],
+    '@typescript-eslint/semi': ['error', 'never'],
     // 不要求禁止在函数括号前有空格
     // 'space-before-function-paren': 'off',
     // '@typescript-eslint/space-before-function-paren': 0,
@@ -301,5 +311,19 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 0,
     // 不对整体项目 强制性命名约定统一风格
     '@typescript-eslint/naming-convention': 0,
+    // 指定 less 引入样式放在最后
+    'simple-import-sort/imports': [
+      1,
+      {
+        groups: [
+          // 首先按照以下顺序排列
+          ['^\\u0000'], // Node.js 内置模块
+          ['^react', '^\\w'], // 框架或库
+          ['^@?\\w'], // 组件、页面和其他
+          // 其余的按照字母顺序排列
+          ['^'],
+        ],
+      },
+    ],
   },
 };
