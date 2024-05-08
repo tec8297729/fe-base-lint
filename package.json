@@ -64,7 +64,7 @@
   "devDependencies": {
     "@types/node": "20.12.10",
     "cross-env": "7.0.3",
-    "np": "10.0.5",
+    "np": "9.2.0",
     "rimraf": "5.0.5"
   }
 }
